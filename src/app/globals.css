@@ -1,30 +1,22 @@
-/* Importando fontes no início */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
 /* Importando TailwindCSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos personalizados */
+/* Estilização personalizada */
 body {
   @apply bg-gray-50 text-gray-800 font-sans;
   margin: 0;
   padding: 0;
 }
 
-/* Fontes e animações */
+/* Fontes */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: "Inter", sans-serif;
-}
-
-/* Links */
-a {
-  @apply text-blue-500 hover:underline;
 }
 
 /* Botões */
@@ -34,6 +26,16 @@ button {
 
 button:hover {
   @apply shadow-lg;
+}
+
+/* Links */
+a {
+  @apply text-blue-600 hover:underline;
+}
+
+/* Contraste Melhorado */
+.text-green-600 {
+  color: #047857; /* Verde com maior contraste */
 }
 
 /* Formulários */
@@ -55,33 +57,20 @@ p {
   @apply text-gray-600;
 }
 
-/* Estilos específicos */
-.bg-prioridade-alta {
-  @apply bg-red-100 text-red-800;
-}
-
-.bg-prioridade-normal {
-  @apply bg-yellow-100 text-yellow-800;
-}
-
-.bg-prioridade-baixa {
-  @apply bg-green-100 text-green-800;
-}
-
-/* Scrollbar personalizado */
+/* Scrollbar Personalizado */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f3f4f6; /* Cinza claro */
+  background: #f3f4f6; /* Cinza Claro */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9ca3af; /* Cinza médio */
+  background: #9ca3af; /* Cinza Médio */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280; /* Cinza escuro */
+  background: #6b7280; /* Cinza Escuro */
 }
