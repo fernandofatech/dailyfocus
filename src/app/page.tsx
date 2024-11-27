@@ -626,7 +626,8 @@ export default function Home() {
 
       {/* Rodapé */}
       <footer className="mt-12 text-center text-sm text-gray-500">
-        <div className="flex flex-wrap gap-4 justify-center">
+        {/* Botões de ação */}
+        <div className="flex flex-wrap gap-4 justify-center mb-4">
           <button
             onClick={shareData}
             className="flex items-center gap-2 text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -662,6 +663,32 @@ export default function Home() {
           >
             <TrashIcon className="h-5 w-5" /> Limpar Histórico
           </button>
+        </div>
+
+        {/* Direitos autorais e links */}
+        <div className="border-t border-gray-300 pt-4">
+          <p className="text-sm text-gray-600">
+            © 2024 Todos os direitos reservados.{" "}
+            <a
+              href="https://www.moretes.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Site oficial de Fernando Azevedo"
+            >
+              Fernando Azevedo
+            </a>
+            {" - "}
+            <a
+              href="https://www.linkedin.com/in/fernando-francisco-azevedo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Perfil no LinkedIn de Fernando Azevedo"
+            >
+              LinkedIn
+            </a>
+          </p>
         </div>
       </footer>
     </main>
