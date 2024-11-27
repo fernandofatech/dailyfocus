@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "DailyFocus - Gerencie Tarefas de Forma Eficiente",
     description:
       "Organize suas tarefas diárias com o DailyFocus. Ferramenta de produtividade com foco em gestão de tempo, metas e relatórios para melhorar seu desempenho.",
-    url: "https://seu-dominio.com",
+    url: "https://dailyfocus.moretes.com",
     siteName: "DailyFocus",
     images: [
       {
