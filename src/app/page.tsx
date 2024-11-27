@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -11,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import TaskTimer from "./component/TaskTimer";
 
 type Task = {
   id: number;
@@ -264,6 +264,74 @@ export default function Home() {
     }
   };
 
+  const TaskCard = ({ task, index }: { task: Task; index: number }) => {
+    const [elapsedTime, setElapsedTime] = useState<string>("");
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setElapsedTime(calculateTime(task.startTime));
+      }, 1000);
+      return () => clearInterval(interval);
+    }, [task.startTime]);
+
+    return (
+      <Draggable draggableId={task.id.toString()} index={index}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            aria-labelledby={`task-title-${task.id}`}
+          >
+            <motion.div
+              className={`p-4 rounded-lg shadow mb-4 ${
+                isOverdue(task.deadline) ? "border border-red-500" : ""
+              } ${getPriorityColor(task.priority)}`}
+              whileHover={{ scale: 1.02 }}
+            >
+              <h4
+                id={`task-title-${task.id}`}
+                className="font-bold text-gray-900"
+              >
+                {task.title}
+              </h4>
+              <p className="text-sm text-gray-600">{task.description}</p>
+              <p className="text-sm text-gray-700">
+                Criado em: {formatDateTime(task.createdAt)}
+              </p>
+              <p className="text-sm text-gray-700">Prazo: {task.deadline}</p>
+              {isOverdue(task.deadline) && (
+                <p className="text-sm text-red-600 flex items-center">
+                  <ExclamationCircleIcon className="h-5 w-5 mr-1" />
+                  Atrasada
+                </p>
+              )}
+              <p className="text-sm text-gray-700">
+                Tempo Gasto: {elapsedTime}
+              </p>
+              <div className="mt-4 flex gap-4">
+                <button
+                  onClick={() => moveTask(task.id, "Backlog")}
+                  className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  aria-label="Mover para Backlog"
+                >
+                  <ArrowLeftIcon className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => moveTask(task.id, "Concluído")}
+                  className="text-green-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  aria-label="Mover para Concluídas"
+                >
+                  <ArrowRightIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </Draggable>
+    );
+  };
+
   // Prevent rendering until termsAccepted is known
   if (termsAccepted === null) {
     return null;
@@ -463,7 +531,6 @@ export default function Home() {
                 </div>
               )}
             </Droppable>
-
             {/* Em Andamento */}
             <Droppable droppableId="Em Andamento">
               {(provided) => (
@@ -476,86 +543,73 @@ export default function Home() {
                   </h3>
                   {tasks
                     .filter((t) => t.column === "Em Andamento")
-                    .map((task, index) => {
-                      const [elapsedTime, setElapsedTime] =
-                        useState<string>("");
-
-                      useEffect(() => {
-                        const interval = setInterval(() => {
-                          setElapsedTime(calculateTime(task.startTime));
-                        }, 1000);
-                        return () => clearInterval(interval);
-                      }, [task.startTime]);
-
-                      return (
-                        <Draggable
-                          key={task.id}
-                          draggableId={task.id.toString()}
-                          index={index}
-                        >
-                          {(provided) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              aria-labelledby={`task-title-${task.id}`}
+                    .map((task, index) => (
+                      <Draggable
+                        key={task.id}
+                        draggableId={task.id.toString()}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            aria-labelledby={`task-title-${task.id}`}
+                          >
+                            <motion.div
+                              className={`p-4 rounded-lg shadow mb-4 ${
+                                isOverdue(task.deadline)
+                                  ? "border border-red-500"
+                                  : ""
+                              } ${getPriorityColor(task.priority)}`}
+                              whileHover={{ scale: 1.02 }}
                             >
-                              <motion.div
-                                className={`p-4 rounded-lg shadow mb-4 ${
-                                  isOverdue(task.deadline)
-                                    ? "border border-red-500"
-                                    : ""
-                                } ${getPriorityColor(task.priority)}`}
-                                whileHover={{ scale: 1.02 }}
+                              <h4
+                                id={`task-title-${task.id}`}
+                                className="font-bold text-gray-900"
                               >
-                                <h4
-                                  id={`task-title-${task.id}`}
-                                  className="font-bold text-gray-900"
+                                {task.title}
+                              </h4>
+                              <p className="text-sm text-gray-600">
+                                {task.description}
+                              </p>
+                              <p className="text-sm text-gray-700">
+                                Criado em: {formatDateTime(task.createdAt)}
+                              </p>
+                              <p className="text-sm text-gray-700">
+                                Prazo: {task.deadline}
+                              </p>
+                              {isOverdue(task.deadline) && (
+                                <p className="text-sm text-red-600 flex items-center">
+                                  <ExclamationCircleIcon className="h-5 w-5 mr-1" />
+                                  Atrasada
+                                </p>
+                              )}
+                              <p className="text-sm text-gray-700">
+                                Tempo Gasto:{" "}
+                                <TaskTimer startTime={task.startTime} />
+                              </p>
+                              <div className="mt-4 flex gap-4">
+                                <button
+                                  onClick={() => moveTask(task.id, "Backlog")}
+                                  className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                                  aria-label="Mover para Backlog"
                                 >
-                                  {task.title}
-                                </h4>
-                                <p className="text-sm text-gray-600">
-                                  {task.description}
-                                </p>
-                                <p className="text-sm text-gray-700">
-                                  Criado em: {formatDateTime(task.createdAt)}
-                                </p>
-                                <p className="text-sm text-gray-700">
-                                  Prazo: {task.deadline}
-                                </p>
-                                {isOverdue(task.deadline) && (
-                                  <p className="text-sm text-red-600 flex items-center">
-                                    <ExclamationCircleIcon className="h-5 w-5 mr-1" />
-                                    Atrasada
-                                  </p>
-                                )}
-                                <p className="text-sm text-gray-700">
-                                  Tempo Gasto: {elapsedTime}
-                                </p>
-                                <div className="mt-4 flex gap-4">
-                                  <button
-                                    onClick={() => moveTask(task.id, "Backlog")}
-                                    className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                                    aria-label="Mover para Backlog"
-                                  >
-                                    <ArrowLeftIcon className="h-5 w-5" />
-                                  </button>
-                                  <button
-                                    onClick={() =>
-                                      moveTask(task.id, "Concluído")
-                                    }
-                                    className="text-green-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    aria-label="Mover para Concluídas"
-                                  >
-                                    <ArrowRightIcon className="h-5 w-5" />
-                                  </button>
-                                </div>
-                              </motion.div>
-                            </div>
-                          )}
-                        </Draggable>
-                      );
-                    })}
+                                  <ArrowLeftIcon className="h-5 w-5" />
+                                </button>
+                                <button
+                                  onClick={() => moveTask(task.id, "Concluído")}
+                                  className="text-green-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                  aria-label="Mover para Concluídas"
+                                >
+                                  <ArrowRightIcon className="h-5 w-5" />
+                                </button>
+                              </div>
+                            </motion.div>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
                   {provided.placeholder}
                 </div>
               )}
