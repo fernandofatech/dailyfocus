@@ -1,0 +1,21 @@
+{
+  "name": "DailyFocus",
+  "short_name": "DailyFocus",
+  "description": "Ferramenta de produtividade para gestão de tarefas diárias.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#0000ff",
+  "display": "standalone"
+}
