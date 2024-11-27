@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   title: "DailyFocus - Organize suas tarefas",
   description:
     "Organize suas tarefas diárias com o DailyFocus. Ferramenta de produtividade com foco em gestão de tempo, metas e relatórios.",
-  metadataBase: new URL("https://dailyfocus.yourdomain.com"), // Atualize com o domínio do seu site
+  metadataBase: new URL("https://dailyfocus.moretes.com"),
   openGraph: {
     title: "DailyFocus - Organize suas tarefas",
     description:
       "Ferramenta de produtividade com foco em organização de tarefas e gestão de tempo.",
-    url: "https://dailyfocus.yourdomain.com",
+    url: "https://dailyfocus.moretes.com",
     siteName: "DailyFocus",
     images: [
       {
