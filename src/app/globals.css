@@ -6,9 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilização personalizada */
+/* Estilos personalizados */
 body {
-  @apply bg-gradient-to-br from-gray-100 to-gray-300 text-gray-800 font-sans;
+  @apply bg-gray-50 text-gray-800 font-sans;
   margin: 0;
   padding: 0;
 }
