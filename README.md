@@ -1,38 +1,77 @@
 # **DailyFocus**
 
-**DailyFocus** é uma ferramenta de produtividade projetada para ajudá-lo a organizar suas tarefas diárias, gerenciar seu tempo e alcançar metas de forma eficiente. Com funcionalidades como **controle de tarefas**, **estimativa de tempo gasto** e **compartilhamento direto**, o DailyFocus é ideal para quem busca melhorar seu desempenho e produtividade.
+**DailyFocus** é uma aplicação de produtividade projetada para ajudar você a organizar suas tarefas, gerenciar seu tempo e atingir metas de maneira eficiente. Criado para ser simples, seguro e intuitivo, ele é ideal para quem busca melhorar a organização e a performance no dia a dia. 🚀
 
 ---
 
-## 🚀 **Funcionalidades Principais**
+## **📋 Funcionalidades**
 
-- **Gestão de Tarefas**:
-  - Adicione, edite e exclua tarefas de forma intuitiva.
-- **Sistema de Colunas**:
-  - Organize tarefas em **Backlog**, **Em Andamento** e **Concluído**.
+- **Gerenciamento de Tarefas**:
+  - Criação, edição e exclusão de tarefas com facilidade.
+  - Organização em colunas: **Backlog**, **Em Andamento** e **Concluído**.
 - **Controle de Tempo**:
-  - Registre e visualize o tempo gasto em cada tarefa até sua conclusão.
-- **Gamificação**:
-  - Defina metas diárias, acompanhe o progresso e desbloqueie recompensas motivadoras.
-- **Compartilhamento**:
-  - Exportação de tarefas em **JSON**.
-  - Compartilhamento direto por **e-mail** e **WhatsApp**.
-  - Geração de relatórios em **Markdown** para integração com **Jira**.
+  - Acompanhe o tempo gasto em cada tarefa em tempo real.
+- **Privacidade e Segurança**:
+  - Todos os dados são armazenados localmente no navegador, sem compartilhamento com terceiros.
+- **Exportação e Compartilhamento**:
+  - Exporte tarefas em **JSON** ou **Markdown**.
+  - Compartilhe relatórios via **e-mail** ou **WhatsApp**.
+- **Acessibilidade e Design Responsivo**:
+  - Interface totalmente responsiva e com práticas otimizadas para acessibilidade.
+- **Gamificação (em breve)**:
+  - Acompanhe seu progresso e desbloqueie metas diárias.
 
 ---
 
-## 🌟 **Pré-requisitos**
+## **🌟 O que torna o DailyFocus único?**
 
-Certifique-se de ter as ferramentas abaixo instaladas antes de começar:
-
-- **Node.js** (versão 16 ou superior).
-- **NPM** (ou Yarn, caso prefira).
+- **Segurança em primeiro lugar**: Nenhum dado é enviado para servidores externos.
+- **Performance garantida**: Aplicação otimizada com **100/100/100** no Lighthouse (Performance, SEO, Acessibilidade e Boas Práticas).
+- **Design moderno**: Desenvolvido com **TailwindCSS** para uma experiência de usuário fluida e responsiva.
 
 ---
 
-## 📦 **Instalação**
+## **🚀 Tecnologias Utilizadas**
+
+- **[Next.js](https://nextjs.org/)**: Framework React para construção de aplicações rápidas e modernas.
+- **[TailwindCSS](https://tailwindcss.com/)**: Framework CSS para design responsivo e rápido.
+- **[Framer Motion](https://www.framer.com/motion/)**: Animações interativas e suaves.
+- **[Heroicons](https://heroicons.com/)**: Ícones elegantes para interfaces.
+
+---
+
+## **📂 Estrutura do Projeto**
+
+```plaintext
+dailyfocus/
+├── public/                     # Arquivos públicos
+│   ├── favicon.ico             # Ícone do site
+│   ├── apple-touch-icon.png    # Ícone para dispositivos Apple
+│   ├── meta-image.png          # Imagem otimizada para redes sociais
+│   ├── site.webmanifest        # Manifesto da aplicação
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Layout global
+│   │   ├── page.tsx            # Página principal
+│   ├── fonts/                  # Fontes personalizadas
+│   ├── globals.css             # Estilos globais do TailwindCSS
+├── package.json                # Configuração das dependências do projeto
+├── tailwind.config.js          # Configuração do TailwindCSS
+├── tsconfig.json               # Configuração do TypeScript
+```
+
+---
+
+## **📦 Instalação**
 
 Siga os passos abaixo para rodar o projeto localmente:
+
+### Pré-requisitos:
+
+- **Node.js**: Versão 16 ou superior.
+- **NPM**: Instalado com o Node.js.
+
+### Passos:
 
 1. **Clone o repositório**:
 
@@ -60,109 +99,80 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 ---
 
-## 🛠️ **Tecnologias Utilizadas**
+## **🌐 SEO e Compartilhamento**
 
-- **[Next.js](https://nextjs.org/)**: Framework React para desenvolvimento de aplicações web modernas.
-- **[TailwindCSS](https://tailwindcss.com/)**: Framework CSS para estilização rápida e responsiva.
-- **[Framer Motion](https://www.framer.com/motion/)**: Biblioteca para animações suaves e interativas.
-- **[Heroicons](https://heroicons.com/)**: Ícones elegantes para interfaces.
+O DailyFocus está configurado para compartilhamento em redes sociais e otimizado para SEO:
 
----
-
-## 📂 **Estrutura do Projeto**
-
-```plaintext
-dailyfocus/
-├── public/                     # Arquivos públicos (favicon, imagens, manifest)
-│   ├── favicon.ico             # Ícone do site
-│   ├── apple-touch-icon.png    # Ícone para dispositivos Apple
-│   ├── meta-image.png          # Imagem para redes sociais
-│   ├── site.webmanifest        # Manifesto da aplicação
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx          # Layout global
-│   │   ├── page.tsx            # Página principal
-│   ├── fonts/                  # Fontes locais
-│   ├── globals.css             # Estilos globais
-├── package.json                # Dependências do projeto
-├── tailwind.config.js          # Configuração do TailwindCSS
-├── tsconfig.json               # Configuração do TypeScript
-```
-
----
-
-## 🌐 **SEO e Compartilhamento**
-
-O DailyFocus está otimizado para motores de busca (SEO) e compartilhamento em redes sociais:
-
-- **Metadados principais**:
-
+- **Open Graph e Twitter Cards**:
+  - **Imagem Meta**: `meta-image.png` (dimensão: 1200x630).
   - **Título**: "DailyFocus - Gerencie Tarefas de Forma Eficiente".
   - **Descrição**: "Organize suas tarefas diárias com o DailyFocus. Ferramenta de produtividade com foco em gestão de tempo, metas e relatórios para melhorar seu desempenho.".
 
-- **Imagens**:
+### Teste os Metadados:
 
-  - `meta-image.png`: Dimensão recomendada de **1200x630 pixels** para redes sociais.
-
-- **Testes de Compartilhamento**:
-  - Valide no [Facebook Debugger](https://developers.facebook.com/tools/debug/).
-  - Verifique no [Twitter Card Validator](https://cards-dev.twitter.com/validator).
+- **Facebook Debugger**: [Testar aqui](https://developers.facebook.com/tools/debug/).
+- **Twitter Card Validator**: [Validar aqui](https://cards-dev.twitter.com/validator).
 
 ---
 
-## 🎯 **Contribuição**
+## **💡 Boas Práticas**
 
-Se você deseja contribuir para este projeto, siga estas etapas:
+1. **Teste o desempenho com Lighthouse**:
 
-1. Faça um fork do repositório:
+   - Acesse o site no Chrome.
+   - Abra o DevTools (`F12`) → Aba **Lighthouse**.
+   - Gere o relatório e veja como seu app atinge **100/100/100**.
+
+2. **Acessibilidade**:
+   - Interface otimizada para navegação por teclado e leitores de tela.
+
+---
+
+## **🎯 Contribuições**
+
+Sinta-se à vontade para contribuir com melhorias:
+
+1. **Faça um fork do repositório**:
 
    ```bash
    git fork https://github.com/fernandofatech/dailyfocus.git
    ```
 
-2. Crie uma nova branch para sua funcionalidade:
+2. **Crie uma nova branch**:
 
    ```bash
-   git checkout -b feature/sua-feature
+   git checkout -b feature/nova-funcionalidade
    ```
 
-3. Realize suas alterações e faça commit:
+3. **Realize suas alterações e faça commit**:
 
    ```bash
    git commit -m "Adiciona nova funcionalidade"
    ```
 
-4. Faça o push para a sua branch:
+4. **Envie suas alterações para o repositório**:
 
    ```bash
-   git push origin feature/sua-feature
+   git push origin feature/nova-funcionalidade
    ```
 
-5. Abra um Pull Request para análise.
+5. **Abra um Pull Request**.
 
 ---
 
-## 📄 **Licença**
+## **📄 Licença**
 
-Este projeto está licenciado sob a licença **MIT**. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+Este projeto está licenciado sob a **Licença MIT**. Consulte o arquivo [LICENSE](./LICENSE) para mais informações.
 
 ---
 
-## 📞 **Contato**
+## **📞 Contato**
 
 - **Autor**: Fernando Azevedo
 - **E-mail**: [fernando@moretes.com](mailto:fernando@moretes.com)
 - **LinkedIn**: [Fernando Francisco Azevedo](https://www.linkedin.com/in/fernando-francisco-azevedo/)
+- **Site**: [Moretes](https://www.moretes.com/)
 
 ---
 
-## 💡 **Dica: Teste o Projeto com Google Lighthouse**
-
-1. Abra o projeto no **Google Chrome**.
-2. Pressione `F12` → Navegue até a aba **Lighthouse**.
-3. Gere um relatório de SEO, performance e acessibilidade.
-4. Utilize os insights para melhorar a experiência do usuário.
-
----
-
-**DailyFocus** é o seu parceiro ideal para organizar sua rotina e aumentar sua produtividade. Comece agora mesmo! 💪🚀
+💡 **Dica Final**: O **DailyFocus** é mais do que um aplicativo de tarefas — é um companheiro para produtividade. Experimente e veja como ele pode transformar sua rotina! 🚀
