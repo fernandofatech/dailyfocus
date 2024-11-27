@@ -214,17 +214,24 @@ export default function Home() {
   };
 
   const TermsModal = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <div className="bg-white p-6 rounded-lg max-w-lg mx-4">
-        <h2 className="text-2xl font-bold mb-4">Termos de Uso</h2>
-        <p className="mb-4">
+        <h2 id="modal-title" className="text-2xl font-bold mb-4 text-gray-900">
+          Termos de Uso
+        </h2>
+        <p className="mb-4 text-gray-700">
           Este aplicativo armazena seus dados localmente no navegador
           (localStorage). Seus dados não são compartilhados com terceiros. É de
           sua responsabilidade gerenciar e proteger as informações inseridas.
         </p>
         <button
           onClick={acceptTerms}
-          className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Aceitar
         </button>
@@ -263,7 +270,10 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-800 flex flex-col p-6">
+    <main
+      className="min-h-screen bg-gray-50 text-gray-800 flex flex-col p-6"
+      aria-label="Página Principal"
+    >
       {!termsAccepted && <TermsModal />}
 
       {/* Cabeçalho */}
@@ -276,48 +286,94 @@ export default function Home() {
 
       <div className="w-full max-w-7xl mx-auto">
         {/* Adicionar Tarefa */}
-        <section className="w-full max-w-xl mx-auto bg-white shadow rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold mb-4">Adicionar Tarefa</h2>
-          <input
-            type="text"
-            placeholder="Título"
-            value={newTask.title}
-            onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg mb-3"
-          />
-          <textarea
-            placeholder="Descrição"
-            value={newTask.description}
-            onChange={(e) =>
-              setNewTask({ ...newTask, description: e.target.value })
-            }
-            className="w-full p-3 border border-gray-300 rounded-lg mb-3"
-          />
-          <select
-            value={newTask.priority}
-            onChange={(e) =>
-              setNewTask({
-                ...newTask,
-                priority: e.target.value as Task["priority"],
-              })
-            }
-            className="w-full p-3 border border-gray-300 rounded-lg mb-3"
+        <section
+          aria-labelledby="add-task-section"
+          className="w-full max-w-xl mx-auto bg-white shadow rounded-lg p-6 mb-6"
+        >
+          <h2
+            id="add-task-section"
+            className="text-2xl font-semibold mb-4 text-gray-900"
           >
-            <option>Alta</option>
-            <option>Normal</option>
-            <option>Baixa</option>
-          </select>
-          <input
-            type="date"
-            value={newTask.deadline}
-            onChange={(e) =>
-              setNewTask({ ...newTask, deadline: e.target.value })
-            }
-            className="w-full p-3 border border-gray-300 rounded-lg mb-3"
-          />
+            Adicionar Tarefa
+          </h2>
+          <div className="mb-3">
+            <label
+              htmlFor="task-title"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Título
+            </label>
+            <input
+              id="task-title"
+              type="text"
+              placeholder="Título"
+              value={newTask.title}
+              onChange={(e) =>
+                setNewTask({ ...newTask, title: e.target.value })
+              }
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="task-description"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Descrição
+            </label>
+            <textarea
+              id="task-description"
+              placeholder="Descrição"
+              value={newTask.description}
+              onChange={(e) =>
+                setNewTask({ ...newTask, description: e.target.value })
+              }
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="task-priority"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Prioridade
+            </label>
+            <select
+              id="task-priority"
+              value={newTask.priority}
+              onChange={(e) =>
+                setNewTask({
+                  ...newTask,
+                  priority: e.target.value as Task["priority"],
+                })
+              }
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option>Alta</option>
+              <option>Normal</option>
+              <option>Baixa</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="task-deadline"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Prazo
+            </label>
+            <input
+              id="task-deadline"
+              type="date"
+              value={newTask.deadline}
+              onChange={(e) =>
+                setNewTask({ ...newTask, deadline: e.target.value })
+              }
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
           <button
             onClick={addTask}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Adicionar
           </button>
@@ -330,7 +386,10 @@ export default function Home() {
             <Droppable droppableId="Backlog">
               {(provided) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <h3 className="text-xl font-bold mb-4 text-center">
+                  <h3
+                    className="text-xl font-bold mb-4 text-center text-gray-900"
+                    id="backlog-column"
+                  >
                     Backlog
                   </h3>
                   {tasks
@@ -346,6 +405,7 @@ export default function Home() {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
+                            aria-labelledby={`task-title-${task.id}`}
                           >
                             <motion.div
                               className={`p-4 rounded-lg shadow mb-4 ${
@@ -355,14 +415,19 @@ export default function Home() {
                               } ${getPriorityColor(task.priority)}`}
                               whileHover={{ scale: 1.02 }}
                             >
-                              <h4 className="font-bold">{task.title}</h4>
+                              <h4
+                                id={`task-title-${task.id}`}
+                                className="font-bold text-gray-900"
+                              >
+                                {task.title}
+                              </h4>
                               <p className="text-sm text-gray-600">
                                 {task.description}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-gray-700">
                                 Criado em: {formatDateTime(task.createdAt)}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-gray-700">
                                 Prazo: {task.deadline}
                               </p>
                               {isOverdue(task.deadline) && (
@@ -376,13 +441,15 @@ export default function Home() {
                                   onClick={() =>
                                     moveTask(task.id, "Em Andamento")
                                   }
-                                  className="text-blue-600 hover:text-blue-800"
+                                  className="text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                  aria-label="Mover para Em Andamento"
                                 >
                                   <ArrowRightIcon className="h-5 w-5" />
                                 </button>
                                 <button
                                   onClick={() => deleteTask(task.id)}
-                                  className="text-red-600 hover:text-red-800"
+                                  className="text-red-600 hover:text-red-800 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                  aria-label="Excluir Tarefa"
                                 >
                                   <TrashIcon className="h-5 w-5" />
                                 </button>
@@ -401,33 +468,37 @@ export default function Home() {
             <Droppable droppableId="Em Andamento">
               {(provided) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <h3 className="text-xl font-bold mb-4 text-center">
+                  <h3
+                    className="text-xl font-bold mb-4 text-center text-gray-900"
+                    id="in-progress-column"
+                  >
                     Em Andamento
                   </h3>
                   {tasks
                     .filter((t) => t.column === "Em Andamento")
-                    .map((task, index) => (
-                      <Draggable
-                        key={task.id}
-                        draggableId={task.id.toString()}
-                        index={index}
-                      >
-                        {(provided) => {
-                          const [elapsedTime, setElapsedTime] =
-                            useState<string>("");
+                    .map((task, index) => {
+                      const [elapsedTime, setElapsedTime] =
+                        useState<string>("");
 
-                          useEffect(() => {
-                            const interval = setInterval(() => {
-                              setElapsedTime(calculateTime(task.startTime));
-                            }, 1000);
-                            return () => clearInterval(interval);
-                          }, [task.startTime]);
+                      useEffect(() => {
+                        const interval = setInterval(() => {
+                          setElapsedTime(calculateTime(task.startTime));
+                        }, 1000);
+                        return () => clearInterval(interval);
+                      }, [task.startTime]);
 
-                          return (
+                      return (
+                        <Draggable
+                          key={task.id}
+                          draggableId={task.id.toString()}
+                          index={index}
+                        >
+                          {(provided) => (
                             <div
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
+                              aria-labelledby={`task-title-${task.id}`}
                             >
                               <motion.div
                                 className={`p-4 rounded-lg shadow mb-4 ${
@@ -437,14 +508,19 @@ export default function Home() {
                                 } ${getPriorityColor(task.priority)}`}
                                 whileHover={{ scale: 1.02 }}
                               >
-                                <h4 className="font-bold">{task.title}</h4>
+                                <h4
+                                  id={`task-title-${task.id}`}
+                                  className="font-bold text-gray-900"
+                                >
+                                  {task.title}
+                                </h4>
                                 <p className="text-sm text-gray-600">
                                   {task.description}
                                 </p>
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-gray-700">
                                   Criado em: {formatDateTime(task.createdAt)}
                                 </p>
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-gray-700">
                                   Prazo: {task.deadline}
                                 </p>
                                 {isOverdue(task.deadline) && (
@@ -453,13 +529,14 @@ export default function Home() {
                                     Atrasada
                                   </p>
                                 )}
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-gray-700">
                                   Tempo Gasto: {elapsedTime}
                                 </p>
                                 <div className="mt-4 flex gap-4">
                                   <button
                                     onClick={() => moveTask(task.id, "Backlog")}
-                                    className="text-gray-600 hover:text-gray-800"
+                                    className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                                    aria-label="Mover para Backlog"
                                   >
                                     <ArrowLeftIcon className="h-5 w-5" />
                                   </button>
@@ -467,17 +544,18 @@ export default function Home() {
                                     onClick={() =>
                                       moveTask(task.id, "Concluído")
                                     }
-                                    className="text-green-600 hover:text-green-800"
+                                    className="text-green-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    aria-label="Mover para Concluídas"
                                   >
                                     <ArrowRightIcon className="h-5 w-5" />
                                   </button>
                                 </div>
                               </motion.div>
                             </div>
-                          );
-                        }}
-                      </Draggable>
-                    ))}
+                          )}
+                        </Draggable>
+                      );
+                    })}
                   {provided.placeholder}
                 </div>
               )}
@@ -487,7 +565,10 @@ export default function Home() {
             <Droppable droppableId="Concluído">
               {(provided) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <h3 className="text-xl font-bold mb-4 text-center">
+                  <h3
+                    className="text-xl font-bold mb-4 text-center text-gray-900"
+                    id="completed-column"
+                  >
                     Concluídas
                   </h3>
                   {tasks
@@ -503,6 +584,7 @@ export default function Home() {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
+                            aria-labelledby={`task-title-${task.id}`}
                           >
                             <motion.div
                               className={`p-4 rounded-lg shadow mb-4 ${getPriorityColor(
@@ -510,17 +592,22 @@ export default function Home() {
                               )}`}
                               whileHover={{ scale: 1.02 }}
                             >
-                              <h4 className="font-bold">{task.title}</h4>
+                              <h4
+                                id={`task-title-${task.id}`}
+                                className="font-bold text-gray-900"
+                              >
+                                {task.title}
+                              </h4>
                               <p className="text-sm text-gray-600">
                                 {task.description}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-gray-700">
                                 Criado em: {formatDateTime(task.createdAt)}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-gray-700">
                                 Prazo: {task.deadline}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-gray-700">
                                 Tempo Gasto:{" "}
                                 {calculateTime(task.startTime, task.endTime)}
                               </p>
@@ -542,31 +629,36 @@ export default function Home() {
         <div className="flex flex-wrap gap-4 justify-center">
           <button
             onClick={shareData}
-            className="flex items-center gap-2 text-blue-600 hover:underline"
+            className="flex items-center gap-2 text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Compartilhar por E-mail"
           >
             <ShareIcon className="h-5 w-5" /> Compartilhar por E-mail
           </button>
           <button
             onClick={shareWhatsApp}
-            className="flex items-center gap-2 text-green-600 hover:underline"
+            className="flex items-center gap-2 text-green-600 hover:underline focus:outline-none focus:ring-2 focus:ring-green-500"
+            aria-label="Compartilhar no WhatsApp"
           >
             <ShareIcon className="h-5 w-5" /> Compartilhar no WhatsApp
           </button>
           <button
             onClick={downloadJSON}
-            className="flex items-center gap-2 text-gray-600 hover:underline"
+            className="flex items-center gap-2 text-gray-600 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-500"
+            aria-label="Baixar JSON"
           >
             <ShareIcon className="h-5 w-5" /> Baixar JSON
           </button>
           <button
             onClick={downloadMarkdown}
-            className="flex items-center gap-2 text-yellow-600 hover:underline"
+            className="flex items-center gap-2 text-yellow-800 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            aria-label="Exportar para Jira"
           >
             <ShareIcon className="h-5 w-5" /> Exportar para Jira
           </button>
           <button
             onClick={clearHistory}
-            className="flex items-center gap-2 text-red-600 hover:underline"
+            className="flex items-center gap-2 text-red-600 hover:underline focus:outline-none focus:ring-2 focus:ring-red-500"
+            aria-label="Limpar Histórico"
           >
             <TrashIcon className="h-5 w-5" /> Limpar Histórico
           </button>
