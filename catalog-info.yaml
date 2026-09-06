@@ -1,0 +1,25 @@
+# Gerado por fernando-moretes/platform. Não edite aqui: mude no orquestrador e
+# rode `make rollout`. É o que o Backstage (backstage.home.lab) lê deste repo.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-dailyfocus
+  description: DailyFocus productivity app published under moretes.com with public GitHub documentation.
+  annotations:
+    github.com/project-slug: fernando-moretes/app-dailyfocus
+    backstage.io/source-location: url:https://github.com/fernando-moretes/app-dailyfocus
+    sonarqube.org/project-key: app-dailyfocus
+  links:
+    - url: https://github.com/fernando-moretes/app-dailyfocus/actions
+      title: Actions
+      icon: github
+    - url: https://sonarqube.home.lab/dashboard?id=app-dailyfocus
+      title: SonarQube
+    - url: https://defectdojo.home.lab/product?name=app-dailyfocus
+      title: DefectDojo
+  tags: [website, ci-node.yml]
+spec:
+  type: website
+  lifecycle: production
+  owner: group:plataforma
+  system: homelab
