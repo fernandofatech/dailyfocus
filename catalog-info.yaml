@@ -4,7 +4,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: app-dailyfocus
-  description: DailyFocus productivity app published under moretes.com with public GitHub documentation.
+  description: "DailyFocus productivity app published under moretes.com with public GitHub documentation."
   annotations:
     github.com/project-slug: fernando-moretes/app-dailyfocus
     backstage.io/source-location: url:https://github.com/fernando-moretes/app-dailyfocus
@@ -17,7 +17,9 @@ metadata:
       title: SonarQube
     - url: https://defectdojo.home.lab/product?name=app-dailyfocus
       title: DefectDojo
-  tags: [website, ci-node.yml]
+  # tags so aceitam [a-z0-9-]: ci-node.yml (ci-node.yml) tem ponto e reprovava
+  # todo componente na policy check do Backstage.
+  tags: [website, node]
 spec:
   type: website
   lifecycle: production
