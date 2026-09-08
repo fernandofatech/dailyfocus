@@ -9,6 +9,8 @@ metadata:
     github.com/project-slug: fernando-moretes/app-dailyfocus
     backstage.io/source-location: url:https://github.com/fernando-moretes/app-dailyfocus
     sonarqube.org/project-key: app-dailyfocus
+    # TechDocs: mkdocs.yml + docs/ do proprio repositorio (rolados pelo platform)
+    backstage.io/techdocs-ref: dir:.
   links:
     - url: https://github.com/fernando-moretes/app-dailyfocus/actions
       title: Actions
